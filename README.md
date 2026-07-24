@@ -132,15 +132,4 @@ All endpoints except register/login require `Authorization: Bearer <access_token
   terminal). `career_assistant/celery.py` is scaffolded if you want to move
   email/AI calls to a background worker later — not required to run the app.
 
-## Deployment (Azure / AWS)
-This is a standard Django app, so either works well:
-- Containerize with a `Dockerfile` (add `gunicorn career_assistant.wsgi` as
-  the entrypoint — `gunicorn` is already in `requirements.txt`).
-- Set `DJANGO_DEBUG=False`, a real `DJANGO_SECRET_KEY`, and your production
-  `DJANGO_ALLOWED_HOSTS` via environment variables.
-- Point `DATABASES` at a managed Postgres instance (Azure Database for
-  PostgreSQL / AWS RDS).
-- Serve static files with `whitenoise` or a CDN/blob storage after running
-  `python manage.py collectstatic`.
-- Store the `GEMINI_API_KEY` and DB credentials as secrets, not in code.
--
+
