@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="auth-html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Assistant &mdash; Sign in</title>
+  <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+</head>
+<body class="auth-body">
+  <div class="auth-shell">
+
+    <!-- LEFT: forms -->
+    <div class="auth-left">
+      <div class="auth-left-inner">
+
+        <div id="login-card" class="auth-form-card">
+          <div class="auth-wordmark">Career<span>Assistant</span></div>
+          <h1>Welcome back!</h1>
+          <p class="auth-sub">Track applications, close skill gaps, and walk into every interview ready &mdash; all with <strong>Career Assistant</strong>.</p>
+
+          <div id="error-banner" class="error-banner"></div>
+
+          <form id="login-form">
+            <div class="field-pill">
+              <label for="login-username">Username</label>
+              <input id="login-username" type="text" placeholder="Username" required autocomplete="username">
+            </div>
+            <div class="field-pill">
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" placeholder="Password" required autocomplete="current-password">
+            </div>
+            <div class="field-aux"><a href="#">Forgot password?</a></div>
+            <button class="btn btn-block" type="submit">Sign in</button>
+          </form>
+
+          <div class="auth-switch">Not a member? <a href="#" id="show-signup">Register now</a></div>
+        </div>
+
+        <div id="signup-card" class="auth-form-card" style="display:none;">
+          <div class="auth-wordmark">Career<span>Assistant</span></div>
+          <h1>Create account</h1>
+          <p class="auth-sub">One profile to score your resume, match jobs, and prep for interviews.</p>
+
+          <div id="error-banner-signup" class="error-banner"></div>
+
+          <form id="signup-form">
+            <div class="field-pill">
+              <label for="signup-username">Username</label>
+              <input id="signup-username" type="text" placeholder="Username" required autocomplete="username">
+            </div>
+            <div class="field-pill">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" type="email" placeholder="Email" required autocomplete="email">
+            </div>
+            <div class="field-pill">
+              <label for="signup-password">Password</label>
+              <input id="signup-password" type="password" placeholder="Password" required autocomplete="new-password">
+            </div>
+            <div class="field-pill">
+              <label for="signup-password-confirm">Confirm password</label>
+              <input id="signup-password-confirm" type="password" placeholder="Confirm password" required autocomplete="new-password">
+            </div>
+            <button class="btn btn-block" type="submit">Create account</button>
+          </form>
+
+          <div class="auth-switch">Already have an account? <a href="#" id="show-login">Sign in</a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: illustration panel -->
+    <div class="auth-right" aria-hidden="true">
+      <div class="auth-illustration">
+        <svg viewBox="0 0 320 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="160" cy="150" r="110" fill="var(--accent-soft)"/>
+          <circle cx="252" cy="72" r="26" fill="#fff" stroke="var(--accent)" stroke-width="2.5"/>
+          <path d="M241 72a11 11 0 1 1 22 0 11 11 0 0 1-22 0z" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <circle cx="60" cy="215" r="24" fill="#fff" stroke="var(--accent)" stroke-width="2.5"/>
+          <path d="M50 220h20M60 210v20" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="96" y="150" width="70" height="52" rx="10" fill="#fff" stroke="var(--accent)" stroke-width="2.5"/>
+          <path d="M118 176h26M118 187h18" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="185" cy="150" r="30" fill="#fff" stroke="var(--accent)" stroke-width="2.5"/>
+          <path d="M185 138v12l8 8" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M160 300c0-38 22-58 50-58s50 20 50 58" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="210" cy="220" r="26" fill="var(--accent)"/>
+          <circle cx="210" cy="212" r="10" fill="#fff"/>
+          <path d="M196 232c3-8 8-12 14-12s11 4 14 12" fill="#fff"/>
+        </svg>
+      </div>
+      <h2 class="auth-illustration-title">Land the role you actually want<br>with <strong>Career Assistant</strong></h2>
+    </div>
+
+  </div>
+  <script src="{% static 'frontend/js/api.js' %}"></script>
+  <script src="{% static 'frontend/js/auth.js' %}"></script>
+</body>
+</html>

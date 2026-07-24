@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Assistant &mdash; Dashboard</title>
+  <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="wordmark">Career<span>File</span></div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span id="user-tag" class="user-tag mono"></span>
+        <button id="logout-btn" class="btn small secondary">Sign out</button>
+      </div>
+    </div>
+
+    <!-- Overview stats -->
+    <div class="grid-2" style="margin-bottom:32px;">
+      <div class="panel standalone">
+        <h3>Case summary</h3>
+        <div class="tag-row">
+          <span class="tag neutral mono">Resumes: <strong id="stat-resumes">--</strong></span>
+          <span class="tag neutral mono">Analyses: <strong id="stat-analyses">--</strong></span>
+          <span class="tag neutral mono">Matches: <strong id="stat-matches">--</strong></span>
+          <span class="tag neutral mono">Latest score: <strong id="stat-latest-score">--</strong></span>
+        </div>
+      </div>
+      <div class="panel standalone">
+        <h3>Recurring skill gaps</h3>
+        <div id="top-skill-gaps"><p class="empty-state">Loading&hellip;</p></div>
+      </div>
+    </div>
+
+    <div id="selected-resume-banner" class="muted mono" style="margin-bottom:12px;"></div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-target="tab-resume">01 &middot; Resume</div>
+      <div class="tab" data-target="tab-score">02 &middot; ATS Score</div>
+      <div class="tab" data-target="tab-match">03 &middot; Job Match</div>
+      <div class="tab" data-target="tab-interview">04 &middot; Interview</div>
+      <div class="tab" data-target="tab-learn">05 &middot; Learn</div>
+    </div>
+
+    <!-- Tab: Resume -->
+    <div id="tab-resume" class="tab-panel panel">
+      <h2>Upload a resume</h2>
+      <div id="upload-zone" class="upload-zone">Drop a PDF or DOCX here, or click to browse</div>
+      <input type="file" id="file-input" accept=".pdf,.docx" style="display:none;">
+      <h3 style="margin-top:28px;">Your resumes</h3>
+      <ul id="resume-list" class="item-list"><li class="empty-state">Loading&hellip;</li></ul>
+    </div>
+
+    <!-- Tab: Score -->
+    <div id="tab-score" class="tab-panel panel" style="display:none;">
+      <h2>ATS readiness score</h2>
+      <div id="score-panel-body"><p class="empty-state">Select a resume from the Resume tab to run an analysis.</p></div>
+    </div>
+
+    <!-- Tab: Match -->
+    <div id="tab-match" class="tab-panel panel" style="display:none;">
+      <h2>Match against a job description</h2>
+      <form id="job-form">
+        <div class="field"><label for="job-title">Job title</label><input id="job-title" type="text" required></div>
+        <div class="field"><label for="job-company">Company (optional)</label><input id="job-company" type="text"></div>
+        <div class="field"><label for="job-text">Paste job description</label><textarea id="job-text" rows="6" required></textarea></div>
+        <div class="field">
+          <label for="match-resume-select">Resume to match</label>
+          <select id="match-resume-select"></select>
+        </div>
+        <button class="btn" type="submit">Save &amp; run match</button>
+      </form>
+      <div id="match-result" style="margin-top:24px;"></div>
+    </div>
+
+    <!-- Tab: Interview -->
+    <div id="tab-interview" class="tab-panel panel" style="display:none;">
+      <h2>Generate interview questions</h2>
+      <div class="field">
+        <label for="interview-resume-select">Resume</label>
+        <select id="interview-resume-select"></select>
+      </div>
+      <button id="generate-questions-btn" class="btn small">Generate questions</button>
+      <div id="interview-result" style="margin-top:20px;"></div>
+    </div>
+
+    <!-- Tab: Learn -->
+    <div id="tab-learn" class="tab-panel panel" style="display:none;">
+      <h2>Learning recommendations</h2>
+      <p class="muted">Run a job match first, then click "Get learning recommendations" there.</p>
+      <div id="recs-result" style="margin-top:16px;"></div>
+    </div>
+  </div>
+
+  <script src="{% static 'frontend/js/api.js' %}"></script>
+  <script src="{% static 'frontend/js/dashboard.js' %}"></script>
+</body>
+</html>
